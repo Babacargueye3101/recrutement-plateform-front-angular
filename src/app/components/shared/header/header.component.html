@@ -1,49 +1,52 @@
 <header class="header">
     <div class="container">
-      <div class="logo">
-        <a routerLink="/" class="flex items-center gap-2">
-          <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-2 rounded-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 12h.01"/><path d="M10 16h4"/><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 13h4v3H2zm16 0h4v3h-4z"/>
-            </svg>
-          </div>
-          <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-            TechRecruit AI
-          </span>
-        </a>
-      </div>
+      <div class="header-content">
+        <div class="logo-section">
+          <a routerLink="/" class="logo-link">
+            <div class="logo-icon">
+              <app-briefcase-icon></app-briefcase-icon>
+            </div>
+            <h1 class="logo-text">
+              TechRecruit AI
+            </h1>
+          </a>
+        </div>
 
-      <nav class="nav-menu">
-        <ul class="nav-list">
+        <nav class="main-nav">
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a routerLink="/" class="nav-link">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/jobs" class="nav-link">Offres d'emploi</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/about" class="nav-link">À propos</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/contact" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="auth-section">
           @if (!isLoggedIn) {
-            <li>
-              <a routerLink="/login" class="nav-link">
-                Connexion
-              </a>
-            </li>
-            <li>
-              <a routerLink="/register" class="nav-link register-btn">
-                Inscription
-              </a>
-            </li>
+            <button routerLink="/login" class="auth-button">
+              Se connecter
+            </button>
           } @else {
-            <li>
-              <a routerLink="/dashboard" class="nav-link">
-                Tableau de bord
-              </a>
-            </li>
-            <li>
-              <a routerLink="/profile" class="nav-link">
-                Profil
-              </a>
-            </li>
-            <li>
-              <button (click)="logout()" class="nav-link logout-btn">
+            <div class="user-actions">
+              @if (isAdmin) {
+                <a routerLink="/admin" class="auth-link">Espace Recruteur</a>
+              } @else {
+                <a routerLink="/dashboard" class="auth-link">Mon Espace</a>
+              }
+              <button (click)="logout()" class="logout-button">
                 Déconnexion
               </button>
-            </li>
+            </div>
           }
-        </ul>
-      </nav>
+        </div>
+      </div>
     </div>
   </header>

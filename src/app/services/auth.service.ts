@@ -77,7 +77,6 @@ export class AuthService {
   }
 
   private get apiUrl(): string {
-    // Remplacez par votre variable d'environnement ou configuration
     return 'https://votre-api.com';
   }
 
